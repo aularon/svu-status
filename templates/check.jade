@@ -6,7 +6,7 @@ html(lang='en')
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		:less
 			body {
-				font-family: mono;
+				font-family: monospace;
 				font-size: 30px;
 				text-align: center;
 				.status {
@@ -39,7 +39,7 @@ html(lang='en')
 				html+= '<div class="status">'+document.body.className+'!</div>'
 				
 				time = (end - __start) / 1000;
-				if time > 3
+				if (time > 8) and __value
 					document.body.className += ' slow'
 
 				html+= '<div class="time">'+time+'s</div>'

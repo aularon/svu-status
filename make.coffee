@@ -5,7 +5,7 @@ checkmes = []
 for i in [1..9] by 1
 	checkmes.push(["http://class#{i}.svuonline.org/common.js", "TYPE_NAME", "Class##{i}"])
 
-console.log checkmes
+#console.log checkmes
 
 data = {checkmes:checkmes}
 
