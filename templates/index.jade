@@ -1,0 +1,20 @@
+!!! 5
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		title
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		:less
+			.server {
+				float: left;
+				padding: 3px;
+				iframe {
+					margin: 0;
+					padding: 0;
+					border: 0;
+				}
+			}
+	body
+		each chkme in checkmes
+			.server
+				iframe(src="./check.html#src=#{encodeURI(chkme[0])}&var=#{encodeURI(chkme[1])}&label=#{encodeURI(chkme[2])}")

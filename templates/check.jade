@@ -1,0 +1,64 @@
+!!! 5
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		title
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		:less
+			body {
+				font-family: mono;
+				font-size: 30px;
+				text-align: center;
+				.status {
+					text-transform: uppercase;
+					font-weight: bold;
+				}
+				color: #fff;
+				background: #999;
+			}
+			.up {
+				background: #080;
+			}
+			.down {
+				background: #f00;
+			}
+			.slow {
+				background: #CB0;
+			}
+
+
+	body(onload='__ready()')
+		:coffeescript
+			__ready = () ->
+				end = new Date()
+				document.body.title = __data.src
+
+				div = document.createElement 'div'
+				document.body.className = if __value then 'up' else 'down'
+				html = '<div class="server">'+encodeURI(__data.label)+'</div>'
+				html+= '<div class="status">'+document.body.className+'!</div>'
+				
+				time = (end - __start) / 1000;
+				if time > 3
+					document.body.className += ' slow'
+
+				html+= '<div class="time">'+time+'s</div>'
+				
+				document.body.innerHTML = html
+				
+			__data = {}
+			for pair in location.hash.substr(1).split '&'
+				pair = pair.split '='
+				__data[pair[0]] = decodeURI pair[1]
+
+			__data.srv = __data.src.match(/\/\/[^\/]+/)[0].substr(2)
+			#console.log __data
+
+			window.__start = new Date()
+			window.__data  = __data
+			window.__ready = __ready
+			__data.src += '?' + Math.random()
+			document.write encodeURI(__data.label) + '<br />...'
+			document.write "<script src=\"#{encodeURI __data.src}\"><"+ '/script>'
+			document.write "<script" + '>' + '__value = window[__data.var]' + "<"+ '/script>'  
+			
