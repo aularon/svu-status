@@ -1,4 +1,4 @@
 svu-status
 ==========
 
-Syrian Virtual University Servers' Status
+[Syrian Virtual University Servers' Status](http://svustatus.aularon.com/)
