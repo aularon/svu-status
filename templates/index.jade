@@ -2,7 +2,7 @@
 html(lang='en')
 	head
 		meta(charset='utf-8')
-		title
+		title SVU Server's Status!
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		:less
 
@@ -23,16 +23,20 @@ html(lang='en')
 				}
 			}
 	body
-		each chkme in checkmes
-			.server
-				iframe(src="./check.html#src=#{encodeURI(chkme[0])}&var=#{encodeURI(chkme[1])}&label=#{encodeURI(chkme[2])}")
-		hr(style="clear: both")
+		h1 Syrian Virtual University Servers' Status
+		each section in checkmes
+			h2=section[0]
+			for chkme in section[1]
+				.server
+					iframe(src="./check.html#src=#{encodeURI(chkme[0])}&var=#{encodeURI(chkme[1])}&label=#{encodeURI(chkme[2])}")
+
+			hr(style="clear: both")
 		p.note
 			| Developed By 
 			a(href='https://twitter.com/aularon') @aularon
 			| , sourcecode:
 			a(href='https://github.com/aularon/svu-status') 🐱/aularon/svu-status
 			| | Hosted By 
-			a(href='https://twitter.com/aularon')
+			a(href='http://www.etabits.com/')
 				img(alt="EtaBits Logo", src="http://www.etabits.com/favicon.ico", style='vertical-align: sub;')
 				span.etabits EtaBits
